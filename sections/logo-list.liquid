@@ -94,13 +94,8 @@
                     image: block.settings.image,
                     src_width: block.settings.logo_width,
                     srcset_2x: true,
-                    section_index: section.index,
                     class: 'w-auto'
                   %}
-
-                  {%- if block.settings.text != blank -%}
-                    <p class="pt-4 pb-0">{{ block.settings.text }}</p>
-                  {%- endif -%}
 
                   {%- if block.settings.url != blank -%}
                     </a>
@@ -193,7 +188,7 @@
       "content": "Layout"
     },
     {
-      "type": "select",
+      "type": "radio",
       "id": "layout",
       "label": "Layout",
       "options": [
@@ -273,7 +268,7 @@
       "default": true
     }
   ],
-  "max_blocks": 50,
+  "max_blocks": 12,
   "blocks": [
     {
       "type": "logo",
@@ -298,11 +293,6 @@
           "unit": "px",
           "label": "Maximum logo width",
           "default": 120
-        },
-        {
-          "type": "text",
-          "id": "text",
-          "label": "Text (optional)"
         }
       ]
     }

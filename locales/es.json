@@ -27,9 +27,7 @@
       "label": "Paginación",
       "next": "Siguiente",
       "previous": "Anterior",
-      "position": "Página {{ current_page }} \/ {{ total_pages }}",
-      "position_results": "Mostrando {{ visible_results }} de {{ total_results }}",
-      "show_more": "Mostrar más"
+      "position": "Página {{ current_page }} \/ {{ total_pages }}"
     },
     "search": {
       "title": "Buscar",
@@ -40,10 +38,8 @@
       "products": "Productos",
       "collections": "Colecciones",
       "pages": "Páginas",
-      "queries": "Sugerencias",
       "articles": "Artículos",
-      "view_all": "Ver todos los resultados de búsqueda",
-      "all_product_types": "Todos"
+      "view_all": "Ver todos los resultados de búsqueda"
     },
     "slider": {
       "next": "Siguiente",
@@ -53,9 +49,8 @@
     "social": {
       "share_heading": "Compartir",
       "share_on_facebook": "Compartir en Facebook",
-      "share_on_twitter": "Tuitear en X",
-      "share_on_pinterest": "Crear un Pin en Pinterest",
-      "follow_shop": "{{ shop_name }} en {{ social_platform }}"
+      "share_on_twitter": "Tuitear en Twitter",
+      "share_on_pinterest": "Crear un Pin en Pinterest"
     },
     "meta": {
       "page": "Página {{ page }}",
@@ -88,7 +83,6 @@
       "added_to_cart": "Se ha añadido el artículo al carrito",
       "awaiting_sale": "Este producto no está disponible para comprar todavía.",
       "backorder": "está agotado y se enviará tan pronto como vuelva a estar disponible.",
-      "barcode": "Código de barras:",
       "choose_options": "Elegir opciones",
       "description": "Descripción",
       "from": "Desde",
@@ -144,7 +138,6 @@
       "value_reduction_up_to_html": "Hasta un {{ amount }} de descuento",
       "vendor": "Por",
       "view_details": "Ver información",
-      "weight": "Peso",
       "xr_button": "Ver en su espacio"
     },
     "filtering": {
@@ -175,7 +168,6 @@
       "low_stock": "Poca disponibilidad",
       "very_low_stock": "Muy poca disponibilidad",
       "only_x_left": "{{ quantity }} disponibles",
-      "backordered": "Pedido pendiente",
       "available_count": {
         "one": "{{ count }} unidad",
         "other": "{{ count }} unidades"
@@ -523,14 +515,6 @@
       "add_to_apple_wallet": "Añadir a Apple Wallet",
       "shop_link": "Comenzar a comprar",
       "print": "Imprimir"
-    },
-    "recipient": {
-      "checkbox": "Quiero enviar esto como un regalo.",
-      "email_label_optional": "Correo electrónico de la persona destinataria",
-      "email_label_required": "Correo electrónico de la persona destinataria *",
-      "name_label": "Nombre de la persona destinataria",
-      "message_label": "Mensaje",
-      "max_characters": "{{ max_chars }} caracteres máx."
     }
   },
   "onboarding": {

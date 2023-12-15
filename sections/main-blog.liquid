@@ -47,9 +47,8 @@
     <blog-filter>
       {%- liquid
         assign filter_label = 'blogs.filtering.filter_by' | t
-        assign filter_all = 'blogs.filtering.all' | t | append: ','
         assign tag_values = blog.all_tags | join: ',' | prepend: "-," | split: ','
-        assign tag_names = blog.all_tags | join: ',' | prepend: filter_all | split: ','
+        assign tag_names = blog.all_tags | join: ',' | prepend: "All," | split: ','
 
         if current_tags
           assign selected_Value = current_tags | join
@@ -98,7 +97,6 @@
           article: article,
           blog_url: blog.url,
           featured: true,
-          large_image: true,
           color_scheme: section.settings.color_scheme,
           show_image: section.settings.show_featured_image,
           image_ratio: image_ratio,
@@ -114,16 +112,12 @@
     {%- endfor -%}
   {%- endif -%}
 
-  {%- if settings.pagination_style == "modern" or settings.pagination_infinite -%}
-    <script src="{{ 'custom-pagination.js' | asset_url }}" defer="defer"></script>
-  {%- endif -%}
-
   {%- paginate blog.articles by section.settings.posts_per_page -%}
-    <custom-pagination class="block mt-8 lg:blog-mt-16" data-infinite-scroll="{{ settings.pagination_infinite }}" data-pause-infinite-scroll="false">
+    <div class="mt-8 lg:blog-mt-16">
       <ul class="grid grid-cols-1 gap-theme blog-gap-y-12 lg:blog-gap-y-16 sm:grid-cols-2 md:grid-cols-3{% unless section.settings.three_columns %} lg:grid-cols-4{% endunless %}" role="list">
         {%- for article in blog.articles -%}
-          {%- unless section.settings.show_featured_post and forloop.first and paginate.current_page == 1 -%}
-            <li class="js-pagination-result">
+          {%- unless section.settings.show_featured_post and forloop.first -%}
+            <li>
               {% render 'article-card',
                 article: article,
                 blog_url: blog.url,
@@ -142,10 +136,10 @@
         </ul>
 
       {%- if paginate.pages > 1 -%}
-        <hr class="mt-section js-when-paginated-only"/>
-        {% render 'pagination', paginate: paginate, style: settings.pagination_style %}
+        <hr class="mt-section"/>
+        {% render 'pagination', paginate: paginate %}
       {%- endif -%}
-    </custom-pagination>
+    </div>
   {%- endpaginate -%}
 </div>
 
@@ -169,7 +163,7 @@
     {
       "type": "checkbox",
       "id": "show_share_links",
-      "label": "Show social share links",
+      "label": "Show share links",
       "default": true
     },
     {

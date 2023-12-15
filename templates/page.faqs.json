@@ -22,7 +22,7 @@
         "banner-text-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Add some general information for your shoppers.<\/p>",
+            "text": "<p>Frequently Asked Questions<\/p>",
             "enlarge_text": true
           }
         }
@@ -32,6 +32,8 @@
         "banner-text-1"
       ],
       "settings": {
+        "image_desktop": "shopify:\/\/shop_images\/Colorful_Blue_and_Purple_Animated_YouTube_Outro.jpg",
+        "url": "",
         "height_mode": "fixed",
         "fixed_height_desktop": 560,
         "fixed_height_mobile": 400,
@@ -41,6 +43,8 @@
         "mobile_stacked": false,
         "color_scheme": "white",
         "full_width": true,
+        "tint_color": "#000000",
+        "tint_opacity": 40,
         "prevent_animation": false
       }
     },
@@ -160,6 +164,7 @@
           "type": "dropdown",
           "settings": {
             "title": "How can we help?",
+            "options": "Customer Service\nWhere's my Stuff?\nHELP!\nReturn\nOther",
             "half_width": false
           }
         },
@@ -181,6 +186,7 @@
       "settings": {
         "heading": "Still looking for answers?",
         "heading_align": "text-center",
+        "image": "shopify:\/\/shop_images\/a-phone-on-a-blue-background-with-contact-us.jpg",
         "image_position": "top",
         "color_scheme": "1",
         "full_width": false,
@@ -193,12 +199,18 @@
         "title": "Trending",
         "heading_align": "text-start",
         "show_view_all": true,
-        "layout": "carousel",
-        "card_size": "small",
-        "products_to_show": 24,
+        "collection": "maintenence",
+        "layout": "grid",
+        "card_size": "medium",
+        "products_to_show": 6,
         "show_promo_info": false,
+        "image": "{{ section.settings.collection.image }}",
         "image_ratio": "1",
-        "color_scheme": "none",
+        "promo_title": "{{ section.settings.collection.title }}",
+        "content": "",
+        "link_url": "",
+        "button_label": "Button",
+        "color_scheme": "1",
         "button_style": "btn btn--secondary"
       }
     },
@@ -215,6 +227,7 @@
         "newsletter-text-2": {
           "type": "text",
           "settings": {
+            "text": "<p>Be the first to know about new collections and exclusive offers.<\/p>",
             "enlarge_text": false
           }
         },
@@ -232,7 +245,9 @@
         "overlay_position": "justify-center",
         "text_align": "text-center",
         "color_scheme": "default",
-        "full_width": true
+        "full_width": true,
+        "tint_color": "#000000",
+        "tint_opacity": 20
       }
     }
   },

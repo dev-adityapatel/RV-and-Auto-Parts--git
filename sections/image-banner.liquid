@@ -1,9 +1,5 @@
 {%- if section.blocks.size > 0 -%}
-  {%- if section.index > 2 -%}
-    <link rel="stylesheet" href="{{ 'text-overlay.css' | asset_url }}" media="print" onload="this.media='all'">
-  {%- else -%}
-    {{ 'text-overlay.css' | asset_url | stylesheet_tag }}
-  {%- endif -%}
+  {{ 'text-overlay.css' | asset_url | stylesheet_tag }}
 {%- endif -%}
 
 {%- liquid
@@ -33,36 +29,10 @@
   if bg_color == 'rgba(0,0,0,0)'
     assign bg_color = false
   endif
-
-  if section.index == 1 or section.settings.prevent_animation
-    assign lazy_load_images = false
-  else
-    assign lazy_load_images = true
-  endif
-
-  if color_scheme == "white"
-    assign brightness = section.settings.transparent_content_color | color_brightness
-    assign alpha = section.settings.transparent_content_color | color_extract: 'alpha'
-    if brightness < 190 and alpha > 0
-      assign transparent_text_contrast = "255 255 255"
-      assign transparent_hover_color = section.settings.transparent_content_color | color_lighten: 10
-    else
-      assign transparent_text_contrast = "0 0 0"
-      assign transparent_hover_color = section.settings.transparent_content_color | color_darken: 10
-    endif
-  endif
 -%}
 
 {%- style -%}
   #{{ section.id }} { background: none; }
-
-  {%- if color_scheme == "white" -%}
-    #{{ section.id }} {
-      --color-scheme-white-text: {{ section.settings.transparent_content_color.red }} {{ section.settings.transparent_content_color.green }} {{ section.settings.transparent_content_color.blue }};
-      --color-scheme-white-hover: {{ transparent_hover_color.red }} {{ transparent_hover_color.green }} {{ transparent_hover_color.blue }};
-      --color-scheme-white-text-contrast: {{ transparent_text_contrast }};
-    }
-  {%- endif -%}
 
   {%- if section.settings.height_mode == 'fixed' -%}
     #{{ section.id }} .image-banner { min-height: {{ section.settings.fixed_height_mobile }}px; }
@@ -98,14 +68,14 @@
     -%}
     #{{ section.id }} .image-banner::after {
       content: '';
-      padding-top: {{ img_padding }};
+      padding-top: {{ img_padding }}%;
     }
 
     {%- if m_img != blank -%}
       @media (max-width: {{ breakpoint_sm }}px) {
         #{{ section.id }} .image-banner::after,
         #{{ section.id }} .media::after {
-          padding-top: {{ m_img_padding }};
+          padding-top: {{ m_img_padding }}%;
         }
       }
     {%- endif -%}
@@ -143,7 +113,7 @@
 {%- endstyle -%}
 
 <div class="section {% if section.settings.full_width %}section--full-width{% else %}container{% endif %}{% if section.settings.mobile_stacked and section.settings.height_mode != 'screen' %} mobile-stacked{% if section.settings.full_width and bg_color == false or bg_color == settings.bg_color %} mobile-stacked--spaced{% endif %}{% endif %}{% unless color_scheme == 'default' %} color-scheme color-scheme--{{ color_scheme }}{% endunless %}" id="{{ section.id }}">
-  <div class="image-banner relative flex {{ overlay_position | last }} {{ section.settings.height_mode }}-height">
+  <div class="image-banner relative flex {{ overlay_position | last }} {{ section.settings.height_mode }}-height{% if section.settings.url != blank %} overflow-hidden{% endif %}">
     {%- if section.settings.url != blank -%}<a href="{{ section.settings.url }}" class="{% if section.settings.mobile_stacked and section.settings.height_mode != 'screen' %}w-full sm:w-auto{% endif %}">{%- endif -%}
       <div class="image-banner__image media media--has-overlay absolute top-0 left-0 w-full h-full">
         {%- if img != blank -%}
@@ -172,18 +142,16 @@
               src_width: 980,
               src_placeholder: true,
               sizes: sizes,
-              lazy_load: lazy_load_images,
               class: 'img-fit sm:hidden'
             -%}
           {%- endif -%}
 
           {%- render 'image',
             image: img,
-            widths: '480, 980, 1200, 1400, 1600, 1920, 2560, 3200',
+            widths: '1200, 1400, 1600, 1920, 2560, 3200',
             src_width: 1400,
             src_placeholder: true,
             sizes: sizes,
-            lazy_load: lazy_load_images,
             class: desktop_image_class
           -%}
         {%- else -%}
@@ -292,7 +260,7 @@
       "type": "range",
       "id": "fixed_height_desktop",
       "min": 400,
-      "max": 1000,
+      "max": 750,
       "step": 10,
       "unit": "px",
       "label": "Minimum fixed height on large screens",
@@ -315,7 +283,7 @@
     {
       "type": "select",
       "id": "overlay_position",
-      "label": "Text position",
+      "label": "Overlay position",
       "options": [
         {
           "value": "justify-start items-start",
@@ -400,7 +368,7 @@
       "options": [
         {
           "value": "white",
-          "label": "Transparent background"
+          "label": "White"
         },
         {
           "value": "default",
@@ -426,13 +394,6 @@
       "id": "full_width",
       "label": "Make section background full width",
       "default": true
-    },
-    {
-      "type": "color",
-      "id": "transparent_content_color",
-      "label": "Text color",
-      "info": "Only applies when the \"Transparent background\" color scheme is chosen.",
-      "default": "#ffffff"
     },
     {
       "type": "color",

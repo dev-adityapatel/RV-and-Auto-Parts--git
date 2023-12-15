@@ -4,7 +4,8 @@
       "type": "main-contact",
       "disabled": true,
       "settings": {
-        "show_contact_title": false
+        "show_contact_title": false,
+        "heading_align": "text-center"
       }
     },
     "image-banner": {
@@ -21,7 +22,7 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Please visit our help pages for answers to some of the most commonly asked questions.<\/p>",
+            "text": "<p>{{ page.title }}<\/p><p>12150 Tech Center Dr<\/p><p>Poway, CA 92064 <\/p><p>PH: 760-651-4005<\/p><p>Hours: <\/p><p>Monday - Friday: 8 am - 5 pm <\/p><p>Saturday: 8 am - Noon<\/p>",
             "enlarge_text": true
           }
         }
@@ -31,15 +32,21 @@
         "text"
       ],
       "settings": {
+        "image_desktop": "shopify:\/\/shop_images\/favicon1.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/favicon1.jpg",
+        "url": "",
         "height_mode": "fixed",
-        "fixed_height_desktop": 560,
-        "fixed_height_mobile": 440,
+        "fixed_height_desktop": 400,
+        "fixed_height_mobile": 250,
         "overlay_position": "justify-start items-center",
         "overlay_text_align": "text-start",
         "mob_center_text": true,
-        "mobile_stacked": false,
+        "mobile_stacked": true,
         "color_scheme": "white",
-        "full_width": true
+        "full_width": true,
+        "tint_color": "#000000",
+        "tint_opacity": 40,
+        "prevent_animation": true
       }
     },
     "form": {
@@ -63,6 +70,7 @@
           "type": "dropdown",
           "settings": {
             "title": "How can we help?",
+            "options": "Customer Service\nWhere's My Stuff?\nReturns\nOther",
             "half_width": false
           }
         },
@@ -102,6 +110,7 @@
         "newsletter-text-1": {
           "type": "text",
           "settings": {
+            "text": "<p>Be the first to know about new collections and exclusive offers.<\/p>",
             "enlarge_text": false
           }
         },
@@ -119,7 +128,9 @@
         "overlay_position": "justify-center",
         "text_align": "text-center",
         "color_scheme": "default",
-        "full_width": true
+        "full_width": true,
+        "tint_color": "#000000",
+        "tint_opacity": 20
       }
     }
   },

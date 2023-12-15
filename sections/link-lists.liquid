@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="{{ 'multi-column.css' | asset_url }}">
+
 {%- if section.blocks.size > 0 -%}
   {%- liquid
     # constants
@@ -111,7 +113,6 @@
                     widths: '460, 700, 860, 1296',
                     src_width: 700,
                     sizes: sizes,
-                    section_index: section.index,
                     class: 'img-fit'
                   %}
                 </div>
@@ -229,7 +230,7 @@
       "content": "Layout"
     },
     {
-      "type": "select",
+      "type": "radio",
       "id": "layout",
       "label": "Layout",
       "options": [
@@ -409,32 +410,24 @@
         {
           "type": "column",
           "settings": {
-            "heading": "Column",
-            "button_link": "/"
+            "heading": "Column 1",
+            "button_link": "#"
           }
         },
         {
           "type": "column",
           "settings": {
-            "heading": "Column",
+            "heading": "Column 2",
             "heading_bg_color": "#484848",
-            "button_link": "/"
+            "button_link": "#"
           }
         },
         {
           "type": "column",
           "settings": {
-            "heading": "Column",
+            "heading": "Column 3",
             "heading_bg_color": "#6e6e6e",
-            "button_link": "/"
-          }
-        },
-        {
-          "type": "column",
-          "settings": {
-            "heading": "Column",
-            "heading_bg_color": "#9F9F9F",
-            "button_link": "/"
+            "button_link": "#"
           }
         }
       ]

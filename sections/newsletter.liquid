@@ -1,9 +1,5 @@
 {%- if section.blocks.size > 0 -%}
-  {%- if section.index > 2 -%}
-    <link rel="stylesheet" href="{{ 'text-overlay.css' | asset_url }}" media="print" onload="this.media='all'">
-  {%- else -%}
-    {{ 'text-overlay.css' | asset_url | stylesheet_tag }}
-  {%- endif -%}
+  {{ 'text-overlay.css' | asset_url | stylesheet_tag }}
 {%- endif -%}
 
 {%- liquid
@@ -26,7 +22,6 @@
   if bg_color == 'rgba(0,0,0,0)'
     assign bg_color = false
   endif
-
   if section.settings.image == blank
     if bg_color != false and bg_color != settings.bg_color
       assign padding = true
@@ -34,7 +29,7 @@
   endif
 -%}
 
-{%- if section.settings.image != blank or color_scheme == "white" -%}
+{%- if section.settings.image != blank -%}
   {%- style -%}
     {%- if section.settings.tint_opacity > 0 -%}
       #{{ section.id }} .media::after {
@@ -43,11 +38,6 @@
     {%- endif -%}
     {%- if bg_color -%}
       #{{ section.id }} .text-overlay { background: {{ bg_color }}; }
-    {%- endif -%}
-    {%- if color_scheme == "white" -%}
-      #{{ section.id }} {
-        --color-scheme-white-text: {{ section.settings.transparent_content_color.red }} {{ section.settings.transparent_content_color.green }} {{ section.settings.transparent_content_color.blue }};
-      }
     {%- endif -%}
   {%- endstyle -%}
 {%- endif -%}
@@ -73,7 +63,6 @@
           src_width: 1680,
           src_placeholder: true,
           sizes: sizes,
-          section_index: section.index,
           class: 'img-fit'
         %}
       </div>
@@ -107,7 +96,7 @@
             {%- when 'form' -%}
               <div class="section__block form-width {% if section.settings.text_align == 'text-start' %} mie-auto{% elsif section.settings.text_align == 'text-end' %} mis-auto{% else %} mx-auto{% endif %}" {{ block.shopify_attributes }}>
                 {%- assign form_id = section.id | append: '-signup' -%}
-                {% render 'newsletter-signup', id: form_id, arrow_button: true, tags: 'newsletter' %}
+                {% render 'newsletter-signup', id: form_id, arrow_button: true %}
               </div>
           {%- endcase -%}
         {%- endfor -%}
@@ -136,7 +125,7 @@
     {
       "type": "select",
       "id": "overlay_position",
-      "label": "Text position",
+      "label": "Overlay position",
       "options": [
         {
           "value": "justify-start",
@@ -194,7 +183,7 @@
       "options": [
         {
           "value": "white",
-          "label": "Transparent background"
+          "label": "White"
         },
         {
           "value": "default",
@@ -220,13 +209,6 @@
       "id": "full_width",
       "label": "Make section background full width",
       "default": true
-    },
-    {
-      "type": "color",
-      "id": "transparent_content_color",
-      "label": "Text color",
-      "info": "Only applies when the \"Transparent background\" color scheme is chosen.",
-      "default": "#ffffff"
     },
     {
       "type": "color",
