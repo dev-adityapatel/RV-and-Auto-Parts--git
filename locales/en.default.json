@@ -27,9 +27,7 @@
       "label": "Pagination",
       "next": "Next",
       "previous": "Previous",
-      "position": "Page {{ current_page }} \/ {{ total_pages }}",
-      "position_results": "Showing {{ visible_results }} of {{ total_results }}",
-      "show_more": "Show more"
+      "position": "Page {{ current_page }} \/ {{ total_pages }}"
     },
     "search": {
       "title": "Search",
@@ -40,10 +38,8 @@
       "products": "Products",
       "collections": "Collections",
       "pages": "Pages",
-      "queries": "Suggestions",
       "articles": "Articles",
-      "view_all": "View all search results",
-      "all_product_types": "All"
+      "view_all": "View all search results"
     },
     "slider": {
       "next": "Next",
@@ -53,9 +49,8 @@
     "social": {
       "share_heading": "Share",
       "share_on_facebook": "Share on Facebook",
-      "share_on_twitter": "Tweet on X",
-      "share_on_pinterest": "Pin on Pinterest",
-      "follow_shop": "{{ shop_name }} on {{ social_platform }}"
+      "share_on_twitter": "Tweet on Twitter",
+      "share_on_pinterest": "Pin on Pinterest"
     },
     "meta": {
       "page": "Page {{ page }}",
@@ -88,7 +83,6 @@
       "added_to_cart": "Item added to your cart.",
       "awaiting_sale": "This product is not for sale yet.",
       "backorder": "is backordered and will ship as soon as it is back in stock.",
-      "barcode": "Barcode:",
       "choose_options": "Choose options",
       "description": "Description",
       "from": "From",
@@ -144,7 +138,6 @@
       "value_reduction_up_to_html": "Up to {{ amount }} off",
       "vendor": "By",
       "view_details": "View details",
-      "weight": "Weight",
       "xr_button": "View in your space"
     },
     "filtering": {
@@ -175,7 +168,6 @@
       "low_stock": "Low stock",
       "very_low_stock": "Very low stock",
       "only_x_left": "{{ quantity }} in stock",
-      "backordered": "Backordered",
       "available_count": {
         "one": "{{ count }} unit",
         "other": "{{ count }} units"
@@ -523,14 +515,6 @@
       "add_to_apple_wallet": "Add to Apple Wallet",
       "shop_link": "Start shopping",
       "print": "Print"
-    },
-    "recipient": {
-      "checkbox": "I want to send this as a gift",
-      "email_label_optional": "Recipient email",
-      "email_label_required": "Recipient email *",
-      "name_label": "Recipient name",
-      "message_label": "Message",
-      "max_characters": "{{ max_chars }} characters max"
     }
   },
   "onboarding": {
@@ -547,6 +531,11 @@
       "vendor": "Product vendor",
       "sku": "SKU1234",
       "description": "A description of the product, including details such as build quality, materials used and reasons to purchase."
+    }
+  },
+  "shopify": {
+    "links": {
+      "powered_by_shopify": "All Rights Reserved"
     }
   }
 }
